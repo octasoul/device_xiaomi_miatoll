@@ -74,6 +74,10 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('remote_register_dma_handle')
         .clear_symbol_version('remote_register_buf_attr')
         .clear_symbol_version('remote_register_buf'),
+    ('vendor/lib64/hw/camera.qcom.so', 'vendor/lib64/libFaceDetectpp-0.5.2.so', 'vendor/lib64/libfacedet.so'): blob_fixup()
+        .replace_needed('libmegface.so', 'libfacedet.so')
+        .replace_needed('libMegviiFacepp-0.5.2.so', 'libFaceDetectpp-0.5.2.so')
+        .replace_needed('megviifacepp_0_5_2_model', 'facedetectpp_0_5_2_model'),
     'vendor/lib64/libgoodixhwfingerprint.so': blob_fixup()
         .replace_needed('libvendor.goodix.hardware.biometrics.fingerprint@2.1.so', 'vendor.goodix.hardware.biometrics.fingerprint@2.1.so'),
     'vendor/lib64/libwvhidl.so': blob_fixup()
