@@ -56,6 +56,11 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libpiex_shim.so'),
     'vendor/lib64/camera/components/com.vidhance.node.eis.so': blob_fixup()
         .replace_needed('libui.so', 'libui-v34.so'),
+    ('system_ext/lib/libwfdservice.so', 'system_ext/lib64/libwfdservice.so'): blob_fixup()
+        .add_needed('libaudioclient_shim.so')
+        .replace_needed('android.media.audio.common.types-V2-cpp.so', 'android.media.audio.common.types-V5-cpp.so'),
+    'system_ext/lib64/libwfdcommonutils.so': blob_fixup()
+        .remove_needed('libheif.so'),
     'vendor/lib64/hw/fingerprint.fpc.default.so': blob_fixup()
         .sig_replace('30 00 00 90 11 3A 42 F9', '30 00 00 90 1F 20 03 D5'),
     ('vendor/lib64/libalAILDC.so', 'vendor/lib64/libalLDC.so', 'vendor/lib64/libalhLDC.so'): blob_fixup()

@@ -1,3 +1,14 @@
 # Allow writing to files in /sys/touchpanel
 allow hal_power_default sysfs_touchpanel:dir search;
 allow hal_power_default sysfs_touchpanel:file rw_file_perms;
+
+allow hal_power_default powerhal_vendor_data_file:dir rw_dir_perms;
+allow hal_power_default powerhal_vendor_data_file:file create_file_perms;
+
+# Allow hal_power to access IStats AIDL
+allow hal_power_default fwk_stats_service:service_manager find;
+binder_call(hal_power_default, stats_service_server);
+
+hal_client_domain(hal_power_default, hal_thermal)
+allow hal_power_default hal_thermal_service:service_manager find;
+

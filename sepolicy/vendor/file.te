@@ -10,3 +10,5 @@ type vendor_thermal_data_file, file_type, data_file_type;
 
 # Torch control
 type sysfs_torch, fs_type, sysfs_type;
+
+type powerhal_vendor_data_file, file_type, data_file_type;

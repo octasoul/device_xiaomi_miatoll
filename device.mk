@@ -80,8 +80,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.memtrack-service
 
-# Dolby Atmos
-$(call inherit-product, vendor/sony/dolby/dolby.mk)
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -289,9 +287,14 @@ PRODUCT_SOONG_NAMESPACES += \
     bootable/deprecated-ota \
     hardware/google/interfaces \
     hardware/google/pixel \
+    hardware/google/pixel/pixelstats \
+    hardware/google/pixel/power-libperfmgr \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client \
     hardware/xiaomi
+
+# ION
+$(call soong_config_set_bool,libion,legacy_impl,true)
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -375,5 +378,3 @@ PRODUCT_PACKAGES += \
 # Inherit proprietary targets
 $(call inherit-product, vendor/xiaomi/miatoll/miatoll-vendor.mk)
 
-# Miui-Camera
-$(call inherit-product-if-exists, vendor/xiaomi/miuicamera-miatoll/MiuiCamera.mk)
